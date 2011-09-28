@@ -1,0 +1,4 @@
+
+
+aaaa ICON "lim2.ico"
+#include "wx/msw/wx.rc"
