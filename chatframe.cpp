@@ -3,6 +3,7 @@
 
 Chatframe::Chatframe(wxString _nick, TCPClient* _client) : wxFrame(0, wxID_ANY, "LIM Client")
 {
+	SetBackgroundColour(wxColour(227,229,234));
 	client = _client;
 	nick = _nick;
 
