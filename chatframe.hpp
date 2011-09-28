@@ -13,6 +13,8 @@ class Chatframe : public wxFrame
 		Chatframe(wxString _nick, TCPClient* _client);
 		~Chatframe();
 		bool running;
+
+		void UpdateNicklist();
 	private:
 		wxTextCtrl* m_textCtrl1;
 		wxTextCtrl* m_textCtrl2;

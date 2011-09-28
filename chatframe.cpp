@@ -12,7 +12,7 @@ Chatframe::Chatframe(wxString _nick, TCPClient* _client) : wxFrame(0, wxID_ANY, 
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 
-	m_textCtrl1 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY  );
+	m_textCtrl1 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxTE_RICH  );
 	//m_textCtrl1->Enable( false );
 
 	bSizer2->Add( m_textCtrl1, 1, wxEXPAND|wxTOP|wxLEFT, 5 );
@@ -30,8 +30,6 @@ Chatframe::Chatframe(wxString _nick, TCPClient* _client) : wxFrame(0, wxID_ANY, 
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 
 	m_listBox1 = new wxListBox( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, NULL, 0|wxVSCROLL|wxTE_READONLY  );
-	m_listBox1->Append( wxT("commander") );
-	m_listBox1->Append( wxT("lein") );
 	m_listBox1->SetBackgroundColour( wxColour( 234, 232, 151 ) );
 	//m_listBox1->Enable( false );
 
@@ -50,6 +48,7 @@ Chatframe::Chatframe(wxString _nick, TCPClient* _client) : wxFrame(0, wxID_ANY, 
 	m_button1->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Chatframe::OnSend ), NULL, this );
 	m_textCtrl2->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( Chatframe::OnSend ), NULL, this );
 	client->SetChatbox(m_textCtrl1);
+	client->SetNicklist(m_listBox1);
 }
 
 Chatframe::~Chatframe()
@@ -83,6 +82,11 @@ void Chatframe::OnSend(wxCommandEvent& event)
 	//wxMessageBox(m_textCtrl2->GetValue(), "Message");
 	m_textCtrl2->Clear();
 	//event.Skip();
+}
+
+void Chatframe::UpdateNicklist()
+{
+
 }
 
 NickDialog::NickDialog(wxString* ptr) : wxDialog(0, wxID_ANY, "Enter your Nickname")
